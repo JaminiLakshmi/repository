@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Repository Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0074d9;
+        }
+
+        #download-form {
+            text-align: center;
+            margin: 30px auto;
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #class {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #download-button {
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #download-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const classInput = document.getElementById("class");
+            const downloadButton = document.getElementById("download-button");
+
+            downloadButton.addEventListener("click", function() {
+                const user = "Upendra2527"; // Your GitHub username
+                const classNumber = classInput.value;
+
+                if (classNumber >= 1 && classNumber <= 5) {
+                    const repo = `OER${classNumber}`;
+                    const repositoryURL = `https://github.com/${user}/${repo}/archive/refs/heads/main.zip`;
+
+                    // Redirect to the GitHub repository zip archive for automatic download
+                    window.location.href = repositoryURL;
+                } else {
+                    alert("Please enter a valid class number (1-5).");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Repository Downloader</h1>
+    <form id="download-form">
+        <label for="class">Choose Class (1-5):</label>
+        <input type="number" id="class" name="class" min="1" max="5" placeholder="Enter class number">
+        <button type="button" id="download-button">Download Class Files</button>
+    </form>
+</body>
+</html>
